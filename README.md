@@ -12,7 +12,7 @@ cd shinobot
 npm install
 ```
 
-## `twit` extensions
+## `<twit>.tweet` object extensions
 
 Along with access to an authenticated twit object, three new methods are exposed;
 
