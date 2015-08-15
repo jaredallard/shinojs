@@ -161,20 +161,59 @@ function main(T, user) {
      * Reply to a tweet
      *
      * @param {string} text - status to send. Automatically adds username at front.
-     * @return {boolean} true on success, false on failure.
+     * @callback cb
+     * @return {object} err - returns err on error.
      **/
-    tweet.reply = function(text) {
+    tweet.reply = function(text, cb) {
         T.post('statuses/update', {
           status: '@'+tweet.user.screen_name+' '+text,
           in_reply_to_status_id: tweet.id_str
         }, function(err, data, res) {
           if(err) {
-            console.log("I failed to send a reply with the error: ", err);
-            return false;
+            if(cb!==undefined) cb(err);
+            return;
           }
 
-          return true;
+          if(cb!==undefined) cb();
         });
+    }
+
+    /**
+     * Favourite a tweet
+     *
+     * @callback cb
+     * @return {object} err - returns err on error.
+     **/
+    tweet.favorite = function(cb) {
+      T.post('favorites/create', {
+        id: tweet.id_str
+      }, function(err, data, res) {
+        if(err) {
+          if(cb!==undefined) cb(err);
+          return;
+        }
+
+        if(cb!==undefined) cb();
+      })
+    }
+
+    /**
+     * Retweet a tweet
+     *
+     * @callback cb
+     * @return {object} err - returns err on error.
+     **/
+    tweet.retweet = function(cb) {
+      T.post('statuses/retweet/:id', {
+        id: tweet.id_str
+      }, function(err, data, res) {
+        if(err) {
+          if(cb!==undefined) cb(err);
+          return;
+        }
+
+        if(cb!==undefined) cb();
+      })
     }
 
     // check if it's @ us, and if it is that it's not a RT.

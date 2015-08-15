@@ -1,21 +1,21 @@
 {
-  "name": "shinojs",
+  "name": "shinobot",
   "version": "1.0.0",
-  "description": "A super modular Twitter bot framework",
+  "description": "0.0.1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jaredallard/shinojs.git"
+    "url": "git+https://github.com/jaredallard/shinobot.git"
   },
   "author": "Jared Allard <jaredallard@outlook.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jaredallard/shinojs/issues"
+    "url": "https://github.com/jaredallard/shinobot/issues"
   },
-  "homepage": "https://github.com/jaredallard/shinojs#readme",
+  "homepage": "https://github.com/jaredallard/shinobot#readme",
   "dependencies": {
     "google-images": "^0.1.0",
     "handlebars": "^3.0.3",
