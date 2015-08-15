@@ -15,20 +15,23 @@
     "function": "updateLocation"
   }],
   "commands": [{
-    "pattern": {
+    "pattern": [{
       "string": "version",
       "flag": "gi"
     },
+    {
+      "string": "--version",
+      "flag": "gi"
+    }],
     "function": "getVersion",
     "response": "v: {{version}} c: {{commit}}"
   },
   {
     "pattern": {
-      "string": "getimage",
+      "string": "get(images|img)",
       "flag": "gi"
     },
-    "function": "getImage",
-    "response": "Failed to obtain an image."
+    "function": "getImage"
   },
   {
     "command": "hello-world",
