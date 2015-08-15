@@ -27,6 +27,7 @@ function getCommit() {
 // version information
 global.version =  require('./package.json').version;
 global.commit = getCommit();
+global.name = "shinobot"
 
 
 // check the config files, if they don't exist start an interactive prompt.
@@ -110,7 +111,7 @@ if(!fs.existsSync('./config.json')) {
 // init the applications, for async.
 function init(ck, cs, at, ats) {
   console.log("(c) 2015 Jared Allard");
-  console.log("shinobot v:", global.version, "c:", global.commit);
+  console.log(global.name, "v:", global.version, "c:", global.commit);
 
   var T = new twit({
     consumer_key: ck,
