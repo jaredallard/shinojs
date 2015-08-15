@@ -129,7 +129,7 @@ function init(ck, cs, at, ats) {
     }
 
     console.log('pre-init auth check succedded.')
-    console.log("screen_name:", data.name);
+    console.log("screen_name:", data.screen_name);
 
     events.init(T, data.screen_name, function() {
       main(T, data.screen_name);
@@ -137,14 +137,23 @@ function init(ck, cs, at, ats) {
   });
 }
 
-// main application.
+/**
+ * Main function
+ *
+ * @param {object} T - authenticated twit object
+ * @param {string} user - screen_name
+ **/
 function main(T, user) {
   // stream
   var stream = T.stream('user');
 
-  stream.on('connect', events.connect);
+  stream.on('connect', function(req) {
+    events.connect(req, T)
+  });
 
-  stream.on('connected', events.connected);
+  stream.on('connected', function(res) {
+    events.connected(res, T);
+  });
 
   stream.on('tweet', function(tweet) {
 
