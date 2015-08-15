@@ -1,5 +1,7 @@
 # shinojs
 
+[![Code Climate](https://codeclimate.com/github/jaredallard/shinojs/badges/gpa.svg)](https://codeclimate.com/github/jaredallard/shinojs)
+
 A super modular Twitter bot framework.
 
 ## Installation
@@ -43,7 +45,7 @@ npm install
   },
   {
     "pattern": {
-      "string": "get(images|img)",
+      "string": "get(images?|imgs?)",
       "flag": "gi"
     },
     "function": "getImage"
