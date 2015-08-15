@@ -6,7 +6,7 @@
   },
   {
     "type": "one-shot",
-    "target": "stream",
+    "target": "never",
     "function": "postImage"
   },
   {
