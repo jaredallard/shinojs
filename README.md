@@ -16,9 +16,29 @@ npm install
 
 Along with access to an authenticated twit object, three new methods are exposed;
 
-`<twit>.tweet.reply(text)`: Reply to the tweet with `text`
-`<twit>.tweet.favorite()`: Favorite the tweet.
-`<twit>.tweet.retweet()`: Retweet the tweet.
+### `.reply`
+
+```js
+<twit>.tweet.reply(text)
+```
+
+Reply to the tweet with `text`
+
+### `.favorite`
+
+```js
+<twit>.tweet.favorite()
+```
+
+Favorite the tweet.
+
+### `.retweet`
+
+```js
+<twit>.tweet.retweet()
+```
+
+Retweet the tweet.
 
 ## Example commands.json
 
