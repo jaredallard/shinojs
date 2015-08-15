@@ -1,61 +1,59 @@
-# shinobot
+# shinojs
 
-A super modular Twitter bot.
+A super modular Twitter bot framework.
 
 ## Installation
 
 ```bash
-git clone https://github.com/jaredallard/shinobot
+git clone https://github.com/jaredallard/shinojs
 cd shinobot
 npm install
 ```
 
-## Making Rules
-
-Open `command.json` and `lib/command_functions.js`.
-
-A rule looks like this:
+## Example commands.json
 
 ```json
 {
-  "command": "",
-  "function": "",
-  "response": ""
+  "events": [{
+    "interval": 900000,
+    "type": "timer",
+    "function": "postImage"
+  },
+  {
+    "type": "one-shot",
+    "target": "never",
+    "function": "postImage"
+  },
+  {
+    "type": "one-shot",
+    "target": "init",
+    "function": "updateLocation"
+  }],
+  "commands": [{
+    "pattern": [{
+      "string": "version",
+      "flag": "gi"
+    },
+    {
+      "string": "--version",
+      "flag": "gi"
+    }],
+    "function": "getVersion",
+    "response": "v: {{version}} c: {{commit}}"
+  },
+  {
+    "pattern": {
+      "string": "get(images|img)",
+      "flag": "gi"
+    },
+    "function": "getImage"
+  },
+  {
+    "command": "hello-world",
+    "response": "Hello, world!"
+  }]
 }
 ```
-
-##### `command` - command to trigger execution
-
-##### `function` - function in `lib/command_functions.js` to execute on trigger
-
-##### `response` - Handlebars template to format with the function.
-
-
-### Example Creation:
-
-Add a new JSON object into the array in command.json. i.e
-
-```json
-{
-  "command": "my-command",
-  "function": "myCommandFunction",
-  "response": "my {{variable}} response"
-}
-```
-
-Now create a function in the `command_functions.js` file we just opened like so:
-
-```js
-cf.myCommandFunction = function(tweet, array) {
-  var text = array.template({
-    variable: "totally unique"
-  })
-  tweet.reply(text);
-  return true;
-}
-```
-
-You can do anything with the [handlebars](https://handlebarsjs.com) template!
 
 ## License
 

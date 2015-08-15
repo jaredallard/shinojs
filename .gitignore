@@ -1,2 +1,5 @@
 node_modules
+lib/command_functions.js
+commands.json
+
 config.json
