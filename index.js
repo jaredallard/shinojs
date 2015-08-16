@@ -139,15 +139,84 @@ function init(ck, cs, at, ats) {
 }
 
 /**
- * Main function
+ * Add to the twit.tweet object
  *
- * @param {object} T - authenticated twit object
- * @param {string} user - screen_name
+ * @param {object} tweet  - twit.tweet object
+ * @param {object} T      - authenticated twit object
+ * @return {object} tweet - twit.tweet object with addons
  **/
-function main(T, user) {
-  // stream
-  var stream = T.stream('user');
+function tweetAddon(tweet, T) {
+  /**
+   * Reply to a tweet
+   *
+   * @param {string} text - status to send. Automatically adds username at front.
+   * @callback cb
+   * @return {object} err - returns err on error.
+   **/
+  tweet.reply = function(text, cb) {
+      T.post('statuses/update', {
+        status: '@'+tweet.user.screen_name+' '+text,
+        in_reply_to_status_id: tweet.id_str
+      }, function(err, data, res) {
+        if(err) {
+          if(cb!==undefined) cb(err);
+          return;
+        }
 
+        if(cb!==undefined) cb();
+      });
+  }
+
+  /**
+   * Favourite a tweet
+   *
+   * @callback cb
+   * @return {object} err - returns err on error.
+   **/
+  tweet.favorite = function(cb) {
+    T.post('favorites/create', {
+      id: tweet.id_str
+    }, function(err, data, res) {
+      if(err) {
+        if(cb!==undefined) cb(err);
+        return;
+      }
+
+      if(cb!==undefined) cb();
+    })
+  }
+
+  /**
+   * Retweet a tweet
+   *
+   * @callback cb
+   * @return {object} err - returns err on error.
+   **/
+  tweet.retweet = function(cb) {
+    T.post('statuses/retweet/:id', {
+      id: tweet.id_str
+    }, function(err, data, res) {
+      if(err) {
+        if(cb!==undefined) cb(err);
+        return;
+      }
+
+      if(cb!==undefined) cb();
+    })
+  }
+
+  return tweet;
+}
+
+/**
+ * Construct a stream object for events.js
+ *
+ * @param {object} stream - twit.stream object
+ * @param {string} user   - accounts "atname" aka @<whatever>
+ * @param {object} T      - authenticated twit object
+ * @return {object} stream - constructed stream object.
+ **/
+function constructStream(stream, user, T) {
   stream.on('connect', function(req) {
     events.connect(req, T)
   });
@@ -157,65 +226,7 @@ function main(T, user) {
   });
 
   stream.on('tweet', function(tweet) {
-
-    /**
-     * Reply to a tweet
-     *
-     * @param {string} text - status to send. Automatically adds username at front.
-     * @callback cb
-     * @return {object} err - returns err on error.
-     **/
-    tweet.reply = function(text, cb) {
-        T.post('statuses/update', {
-          status: '@'+tweet.user.screen_name+' '+text,
-          in_reply_to_status_id: tweet.id_str
-        }, function(err, data, res) {
-          if(err) {
-            if(cb!==undefined) cb(err);
-            return;
-          }
-
-          if(cb!==undefined) cb();
-        });
-    }
-
-    /**
-     * Favourite a tweet
-     *
-     * @callback cb
-     * @return {object} err - returns err on error.
-     **/
-    tweet.favorite = function(cb) {
-      T.post('favorites/create', {
-        id: tweet.id_str
-      }, function(err, data, res) {
-        if(err) {
-          if(cb!==undefined) cb(err);
-          return;
-        }
-
-        if(cb!==undefined) cb();
-      })
-    }
-
-    /**
-     * Retweet a tweet
-     *
-     * @callback cb
-     * @return {object} err - returns err on error.
-     **/
-    tweet.retweet = function(cb) {
-      T.post('statuses/retweet/:id', {
-        id: tweet.id_str
-      }, function(err, data, res) {
-        if(err) {
-          if(cb!==undefined) cb(err);
-          return;
-        }
-
-        if(cb!==undefined) cb();
-      })
-    }
+    tweet = tweetAddon(tweet, T);
 
     // check if it's @ us, and if it is that it's not a RT.
     if(tweet.text.match('@'+user) && (typeof(tweet.retweeted_status)==='undefined')) {
@@ -228,4 +239,19 @@ function main(T, user) {
   stream.on('favorite', events.favorite);
 
   stream.on('disconnect', events.disconnected);
+
+  return stream; // return the stream object if needed.
+}
+
+/**
+ * Main function
+ *
+ * @param {object} T - authenticated twit object
+ * @param {string} user - screen_name
+ **/
+function main(T, user) {
+  // stream
+  var stream = T.stream('user');
+
+  constructStream(stream, user, T);
 }
