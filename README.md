@@ -8,82 +8,23 @@ A super modular Twitter bot framework.
 
 ```bash
 git clone https://github.com/jaredallard/shinojs
-cd shinobot
+cd shinojs
 npm install
 ```
 
-## `<twit>.tweet` object extensions
+## Examples
 
-Along with access to an authenticated twit object, three new methods are exposed;
+Want to test this out? Remove the .example from the example files:
 
-### `.reply`
+ * lib/command_functions.example.js
+ * commands.example.json
 
-```js
-<twit>.tweet.reply(text)
-```
+Then run it and enter your OAuth tokens, then it should run!
 
-Reply to the tweet with `text`
 
-### `.favorite`
+## Documentation
 
-```js
-<twit>.tweet.favorite()
-```
-
-Favorite the tweet.
-
-### `.retweet`
-
-```js
-<twit>.tweet.retweet()
-```
-
-Retweet the tweet.
-
-## Example commands.json
-
-```json
-{
-  "events": [{
-    "interval": 900000,
-    "type": "timer",
-    "function": "postImage"
-  },
-  {
-    "type": "one-shot",
-    "target": "never",
-    "function": "postImage"
-  },
-  {
-    "type": "one-shot",
-    "target": "init",
-    "function": "updateLocation"
-  }],
-  "commands": [{
-    "pattern": [{
-      "string": "version",
-      "flag": "gi"
-    },
-    {
-      "string": "--version",
-      "flag": "gi"
-    }],
-    "function": "getVersion",
-    "response": "v: {{version}} c: {{commit}}"
-  },
-  {
-    "pattern": {
-      "string": "get(images?|imgs?)",
-      "flag": "gi"
-    },
-    "function": "getImage"
-  },
-  {
-    "command": "hello-world",
-    "response": "Hello, world!"
-  }]
-}
-```
+Check out the [wiki](https://github.com/jaredallard/shinojs/wiki)!
 
 ## License
 
