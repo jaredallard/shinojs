@@ -27,7 +27,7 @@ function getCommit() {
 // version information
 global.version =  require('./package.json').version;
 global.commit = getCommit();
-global.name = "shinobot"
+global.name = require('./package.json').name;
 
 
 // check the config files, if they don't exist start an interactive prompt.
@@ -227,6 +227,10 @@ function constructStream(stream, user, T) {
 
   stream.on('tweet', function(tweet) {
     tweet = tweetAddon(tweet, T);
+
+    if(tweet.user.screen_name===user) { // drop tweets from us.
+      return;
+    }
 
     // check if it's @ us, and if it is that it's not a RT.
     if(tweet.text.match('@'+user) && (typeof(tweet.retweeted_status)==='undefined')) {
