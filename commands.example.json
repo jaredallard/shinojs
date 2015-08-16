@@ -1,0 +1,13 @@
+{
+  "commands": [{
+    "stream": "home",
+    "pattern": {
+      "string": "hw",
+      "flag": "gi"
+    },
+    "function": "hw"
+  }],
+  "streams": [
+    "home"
+  ]
+}
