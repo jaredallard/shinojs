@@ -217,6 +217,16 @@ function tweetAddon(tweet, T) {
  * @return {object} stream - constructed stream object.
  **/
 function constructStream(stream, user, T) {
+  var streamUrl = stream.reqOpts.url.match(/([a-z]+\/?[a-z]+)\.json/i)[0],
+      streamType = 'user';
+      
+  console.log('Subscribing to stream:', streamUrl);
+
+  if(streamUrl.match('statuses')) { // probably a public stream
+    streamType = 'public';
+  }
+
+
   stream.on('connect', function(req) {
     events.connect(req, T)
   });
