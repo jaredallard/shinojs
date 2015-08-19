@@ -237,13 +237,8 @@ function constructStream(stream, user, T) {
   stream.on('tweet', function(tweet) {
     tweet = tweetAddon(tweet, T); // construct the tweet addons
 
-    if(streamType === 'public') {
-      // are we even getting tweets from the public stream?
-      //console.log(tweet.text);
-    }
-
     if(tweet.user.screen_name===user) { // drop tweets from us.
-      console.log("Dropping tweeet")
+      console.log("Dropping tweet")
       console.log("REASON:", "from us");
       return;
     }
