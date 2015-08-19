@@ -219,13 +219,12 @@ function tweetAddon(tweet, T) {
 function constructStream(stream, user, T) {
   var streamUrl = stream.reqOpts.url.match(/([a-z]+\/?[a-z]+)\.json/i)[0],
       streamType = 'user';
-      
+
   console.log('Subscribing to stream:', streamUrl);
 
   if(streamUrl.match('statuses')) { // probably a public stream
     streamType = 'public';
   }
-
 
   stream.on('connect', function(req) {
     events.connect(req, T)
@@ -236,17 +235,30 @@ function constructStream(stream, user, T) {
   });
 
   stream.on('tweet', function(tweet) {
-    tweet = tweetAddon(tweet, T);
+    tweet = tweetAddon(tweet, T); // construct the tweet addons
+
+    if(streamType === 'public') {
+      // are we even getting tweets from the public stream?
+      //console.log(tweet.text);
+    }
 
     if(tweet.user.screen_name===user) { // drop tweets from us.
+      console.log("Dropping tweeet")
+      console.log("REASON:", "from us");
       return;
     }
 
     // check if it's @ us, and if it is that it's not a RT.
-    if(tweet.text.match('@'+user) && (typeof(tweet.retweeted_status)==='undefined')) {
+    if(tweet.text.match('@'+user) && (typeof(tweet.retweeted_status)==='undefined') && (streamType !== 'public')) {
       events.mention(tweet, T); // call mention event.
-    } else {
-      events.tweet(tweet, T); // call tweet event.
+    } else { // we don't listen for mentions on pub
+      var streamName;
+      if(streamType === "user") {
+        streamName = "home"
+      } else if (streamType === "public") {
+        streamName = "public"
+      }
+      events.tweet(tweet, T, streamName); // call tweet event.
     }
   });
 
@@ -264,8 +276,20 @@ function constructStream(stream, user, T) {
  * @param {string} user - screen_name
  **/
 function main(T, user) {
-  // stream
-  var stream = T.stream('user');
+  // dynamically create streams
+  var cmd_json = require('./commands.json');
+  var stream;
+  if(cmd_json.streams.indexOf('home') !== -1 || cmd_json.streams.indexOf('home') !== -1) {
+    stream = T.stream('user');
+    constructStream(stream, user, T);
+  }
 
-  constructStream(stream, user, T);
+  if(cmd_json.streams.indexOf('public') !== -1) {
+    if(cmd_json.public_opts === undefined) {
+      throw "public_opts is undefined."
+    } else {
+      stream = T.stream('statuses/'+cmd_json.public_opts.endpoint, cmd_json.public_opts.opts);
+      constructStream(stream, user, T);
+    }
+  }
 }
