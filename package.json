@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jaredallard/shinobot.git"
+    "url": "git+https://github.com/jaredallard/shinojs.git"
   },
   "author": "Jared Allard <jaredallard@outlook.com>",
   "license": "MIT",
