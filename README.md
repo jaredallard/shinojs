@@ -12,6 +12,12 @@ cd shinojs
 npm install
 ```
 
+**or**
+
+```bash
+npm install -g shinojs
+```
+
 ## Examples
 
 Want to test this out? Remove the .example from the example files:
