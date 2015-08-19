@@ -26,6 +26,10 @@ Then run it and enter your OAuth tokens, then it should run!
 
 Check out the [wiki](https://github.com/jaredallard/shinojs/wiki)!
 
+## Tests
+
+We use [nodeunit](https://github.com/caolan/nodeunit)
+
 ## License
 
 MIT

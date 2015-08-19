@@ -24,5 +24,8 @@
     "request": "^2.60.0",
     "simple-spinner": "0.0.5",
     "twit": "^2.1.0"
+  },
+  "devDependencies": {
+    "nodeunit": "^0.9.1"
   }
 }
