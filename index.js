@@ -54,10 +54,6 @@ if(!fs.existsSync('./config.json')) {
   };
 
   prompt.get(schema, function (err, result) {
-    if(result.consumer_key==='') {
-        return 0; // ignore
-    }
-
     if(result.consumer_key === '') {
       throw 'consumer_key empty';
     } else if (result.consumer_secret === '') {
@@ -223,7 +219,7 @@ function tweetAddon(tweet, T) {
 function constructStream(stream, user, T) {
   var streamUrl = stream.reqOpts.url.match(/([a-z]+\/?[a-z]+)\.json/i)[0],
       streamType = 'user';
-
+      
   console.log('Subscribing to stream:', streamUrl);
 
   if(streamUrl.match('statuses')) { // probably a public stream
