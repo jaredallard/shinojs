@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /**
  * shinojs - a simple twitter bot framework
  *
