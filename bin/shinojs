@@ -9,8 +9,8 @@
 
 'use strict';
 
-const events  = require('./lib/events.js'),
-      Shinojs = require('./lib/shino.js'),
+const events  = require('../lib/events.js'),
+      Shinojs = require('../lib/shino.js'),
       path    = require('path'),
       twit    = require('twit');
 
