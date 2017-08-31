@@ -1,6 +1,6 @@
 {
   "name": "shinojs",
-  "version": "1.3.1",
+  "version": "2.0.0",
   "description": "A node.js Twitter bot framework.",
   "main": "./bin/shinojs",
   "bin": "./bin/shinojs",
