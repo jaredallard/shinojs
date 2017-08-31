@@ -4,3 +4,4 @@ commands.json
 
 config.json
 yarn-error.log
+.DS_Store
