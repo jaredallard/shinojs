@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/jaredallard/shinojs#readme",
   "dependencies": {
+    "debug": "^3.0.1",
     "handlebars": "^4.0.10",
     "request": "^2.x.x",
     "simple-spinner": "0.0.5",

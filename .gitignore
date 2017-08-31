@@ -3,3 +3,4 @@ lib/command_functions.js
 commands.json
 
 config.json
+yarn-error.log
