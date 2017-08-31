@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/jaredallard/shinojs/blob/master/.github/logo.jpg?raw=true"/>
+  <a href="https://mowmeme.deviantart.com/art/Sinon-Vector-504234070"><img src="https://github.com/jaredallard/shinojs/blob/master/.github/logo.jpg?raw=true"/></a>
 
 
   <h1 align="center">shinojs</h1>
