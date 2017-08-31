@@ -20,7 +20,11 @@
   "dependencies": {
     "debug": "^3.0.1",
     "handlebars": "^4.0.10",
-    "request": "^2.x.x",
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.4",
     "twit": "^2.2.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3"
   }
 }

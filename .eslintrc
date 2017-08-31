@@ -4,6 +4,7 @@
     "node": true,
     "es6": true
   },
+  "parser": "babel-eslint",
   "rules": {
     /* Possible Errors */
     "no-extra-parens": 2,
