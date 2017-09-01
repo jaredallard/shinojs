@@ -9,7 +9,7 @@
      <a href="#"><img src="https://img.shields.io/badge/build-success-green.svg" alt="Build Status" /></a>
   </p>
 
-  <p align="center"><i>A super modular Twitter bot framework.</i></p>
+  <p align="center"><i>Unopinionated express.js-like Twitter bot framework.</i></p>
 </p>
 
 ## Installation
