@@ -15,9 +15,7 @@
 ## Installation
 
 ```bash
-npm install -g shinojs
-# or
-yarn global add shinojs
+yarn add shinojs
 ```
 
 ## Hacking
@@ -26,8 +24,11 @@ yarn global add shinojs
 git clone git@github.com:jaredallard/shinojs
 cd shinojs
 yarn
-npm link # now you're using this version!
 ```
+
+## Migrating from v2 to v3
+
+Basically you can't. It's now express.js like.
 
 ## Migrating from v1 to v2
 
@@ -44,7 +45,7 @@ Then run it and enter your OAuth tokens, then it should run!
 
 ## Documentation
 
-It's coming soon... in preparation for our **2.0** release!
+It's coming soon... in preparation for our **3.0** release!
 
 ## License
 

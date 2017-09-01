@@ -1,9 +1,8 @@
 {
   "name": "shinojs",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "A node.js Twitter bot framework.",
-  "main": "./bin/shinojs",
-  "bin": "./bin/shinojs",
+  "main": "./lib/shino.js",
   "scripts": {
     "test": "mocha"
   },
