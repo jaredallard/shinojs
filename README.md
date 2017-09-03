@@ -12,6 +12,8 @@
   <p align="center"><i>Unopinionated express.js-like Twitter bot framework.</i></p>
 </p>
 
+#### WARNING: API IS UNSTABLE RIGHT NOW. UNTIL _v3.1_ THINGS MAY BREAK
+
 ## Installation
 
 ```bash
@@ -26,14 +28,6 @@ cd shinojs
 yarn
 ```
 
-## Migrating from v2 to v3
-
-Basically you can't. It's now express.js like.
-
-## Migrating from v1 to v2
-
-... Coming soon. (basically everything is now `async/await`)
-
 ## Examples
 
 Want to test this out? Remove the .example from the example files:
@@ -45,7 +39,7 @@ Then run it and enter your OAuth tokens, then it should run!
 
 ## Documentation
 
-It's coming soon... in preparation for our **3.0** release!
+It's coming soon... in preparation for our **3.1** release!
 
 ## License
 
