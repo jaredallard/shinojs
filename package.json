@@ -17,15 +17,17 @@
   },
   "homepage": "https://github.com/jaredallard/shinojs#readme",
   "dependencies": {
-    "debug": "^3.0.1",
-    "handlebars": "^4.0.10",
+    "debug": "^3.1.0",
+    "handlebars": "^4.0.11",
+    "lodash": "^4.17.4",
     "natural": "^0.5.4",
-    "request": "^2.81.0",
-    "request-promise-native": "^1.0.4",
-    "sentiment": "^4.0.0",
-    "twit": "^2.2.3"
+    "random-string": "^0.2.0",
+    "request": "^2.83.0",
+    "request-promise-native": "^1.0.5",
+    "sentiment": "^4.1.0",
+    "twit": "^2.2.9"
   },
   "devDependencies": {
-    "babel-eslint": "^7.2.3"
+    "babel-eslint": "^8.0.3"
   }
 }
