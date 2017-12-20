@@ -9,7 +9,7 @@
      <a href="#"><img src="https://img.shields.io/badge/build-success-green.svg" alt="Build Status" /></a>
   </p>
 
-  <p align="center"><i>Unopinionated express.js-like Twitter bot framework.</i></p>
+  <p align="center"><i>Unopinionated Twitter bot framework.</i></p>
 </p>
 
 #### WARNING: API IS UNSTABLE RIGHT NOW. UNTIL _v3.1_ THINGS MAY BREAK
@@ -30,12 +30,7 @@ yarn
 
 ## Examples
 
-Want to test this out? Remove the .example from the example files:
-
- * `lib/command_functions.example.js`
- * `commands.example.json`
-
-Then run it and enter your OAuth tokens, then it should run!
+Checkout [shinobot](https://github.com/jaredallard/shinobot)!
 
 ## Documentation
 
