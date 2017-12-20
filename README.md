@@ -28,6 +28,13 @@ cd shinojs
 yarn
 ```
 
+## Documentation
+
+Right now all we have is [choice.schema.js](https://github.com/jaredallard/shinojs/blob/master/choice.schema.js) which
+is an annotated Object with all the possible options you could pass to `app.on`.
+
+Checkout the Examples below for more information on how to use it.
+
 ## Examples
 
 Checkout [shinobot](https://github.com/jaredallard/shinobot)!
