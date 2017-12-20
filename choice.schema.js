@@ -18,9 +18,9 @@
     classifier: "yes", // or an existing classifier (system builtins)
     call: "hello",     // or link to another brick
     default: [         // string, one of these options, default: root
-      "system",        // default to system commands if children aren't met
       "root",          // default to root level commands -> system, if children aren't met
-      "unknown"        // default to "command unknown" handler
+      "unknown",       // default to "command unknown" handler
+      "retry"          // retry, don't drop context 
     ],
     action: "",        // method to call when conditions are met, return true / false to allow children prcoessing if available
     children: [        // an array of "chilren" options, allowing you to track actions available *after* this action.
