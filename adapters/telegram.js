@@ -13,6 +13,8 @@ const _            = require('lodash')
 
 /**
  * Implements a private message, i.e Direct Message, IM, Text, whatever.
+ *
+ * @class Message
  */
 class Message {
   constructor(message, bot) {
@@ -47,7 +49,7 @@ class Message {
    * @return {*}             Value
    */
   getSpecific(field) {
-    return _.get(this.originaldm(), field)
+    return _.get(this.original(), field)
   }
 
   async reply(params) {
@@ -135,12 +137,12 @@ class Adapter extends EventEmitter {
 
   /**
    * Return our username / screenname.
-   * This is so shinojs can filter messages from ourself.
+   * This is so shinojs can filter messages from ourself, if it needs that
    *
    * @return {String} Our username
    */
   identity() {
-    return this.username
+    return null
   }
 }
 

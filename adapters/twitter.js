@@ -65,7 +65,7 @@ class Message {
    * @return {*}             Value
    */
   getSpecific(field) {
-    return _.get(this.originaldm(), field)
+    return _.get(this.original(), field)
   }
 
   async reply(params) {
