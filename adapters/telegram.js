@@ -74,7 +74,9 @@ class Message {
 
     debug('message:create', 'sending message')
 
-    this.bot.sendMessage(params.to.identifier, message)
+    this.bot.sendMessage(params.to.identifier, message, {
+      parse_mode: 'Markdown'
+    })
 
     return {}
   }
