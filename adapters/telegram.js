@@ -35,6 +35,7 @@ class Message {
     this.text       = message.text
     this.identifier = message.message_id
     this.at         = message.date
+    this.chat       = message.chat.id
 
     this.original   = () => {
       debug('warning', 'this is a service specific field that likely won\'t work with other services')
@@ -59,7 +60,7 @@ class Message {
     }
 
     params.to = {
-      identifier:          this.from.identifier
+      identifier:          this.chat || this.from.identifier // default to id
     }
 
     debug('reply', params.to)
@@ -78,18 +79,6 @@ class Message {
     return {}
   }
 }
-
-/**
- * Implements a public facing message, i.e Tweet, or Status.
- *
- * @class Public
- */
-class Public extends Message {
-  constructor(message, bot) {
-    super(message, bot)
-  }
-}
-
 
 /**
  * Ties together implemented Message / Public methods, and constructs
@@ -118,20 +107,13 @@ class Adapter extends EventEmitter {
     })
 
     bot.on('message', message => {
-      debug('message', message)
-
-      const from   = message.from
       const chat   = message.chat
-      const chatId = chat.id
+      const type   = chat.type === 'group' ? 'public' : 'message'
 
       if(!message.text) return; // we don't care about non messages
-      if(chat.type === 'group') {
-        return this.emit('public', new Public(message, bot))
-      }
 
-      if(chat.type === 'private') {
-        return this.emit('message', new Message(message, bot))
-      }
+      debug('new', type, message)
+      this.emit(type, new Message(message, bot))
     })
   }
 

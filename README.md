@@ -12,7 +12,7 @@
   <p align="center"><i>Unopinionated Twitter bot framework.</i></p>
 </p>
 
-#### WARNING: API IS UNSTABLE RIGHT NOW. UNTIL _v3.1_ THINGS MAY BREAK
+#### WARNING: API IS UNSTABLE RIGHT NOW. UNTIL _v4_ THINGS MAY BREAK
 
 ## Installation
 
@@ -41,7 +41,7 @@ Checkout [shinobot](https://github.com/jaredallard/shinobot)!
 
 ## Documentation
 
-It's coming soon... in preparation for our **3.1** release!
+It's coming soon... in preparation for our **v4** release!
 
 ## License
 
